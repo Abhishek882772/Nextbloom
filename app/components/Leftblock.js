@@ -15,7 +15,7 @@ const Leftblock = () => {
         datasets: [
           {
             data: [70, 30],
-            backgroundColor: [ 'black','gray-200'],
+            backgroundColor: [ '#c32e09','rgb(149 8 8)'],
             borderWidth: 0,
           },
         ],
@@ -31,11 +31,11 @@ const Leftblock = () => {
     const sprsChart = new Chart(sprsRef.current, {
       type: 'doughnut',
       data: {
-        labels: ['Implemented', 'Partial', 'Missing'],
+        labels: ['Implemented', 'Partial', 'Missing','not scored'],
         datasets: [
           {
-            data: [50, 25, 25],
-            backgroundColor: ['#22c55e', '#f59e0b', '#ef4444'],
+            data: [50, 20, 20, 10],
+            backgroundColor: ['#260351','#440688','#8412ca','#c262ff' ],
             borderWidth: 0,
           },
         ],
@@ -55,21 +55,18 @@ const Leftblock = () => {
   }, [])
 
   return (
-    <div className="w-[40vw] mt-10 mx-auto rounded-2xl bg-black p-6">
-      <div className="grid md:grid-cols-2 gap-6">
-        
-        <div className="bg-white rounded-xl p-5 shadow text-center">
-          <h3 className="font-semibold mb-3">Asset Overview</h3>
+    <div className="w-[40vw] mt-10 mx-auto rounded-2xl bg-black/30 p-6 h-[58vh]">
+      <div className="grid md:grid-cols-2 gap-6 hover:scale-105 transition-transform duration-300">
+        <div className="bg-white/70  rounded-xl p-5 shadow text-center text-black h-100px hover:scale-105 transition-transform duration-300">
+          <h3 className="font-semibold mb-3">Repeated user</h3>
           <canvas ref={assetRef}></canvas>
           <p className="mt-3 text-lg font-bold">100 Assets</p>
         </div>
-
-        <div className="bg-white rounded-xl p-5 shadow text-center">
-          <h3 className="font-semibold mb-3">SPRS Score</h3>
+        <div className="bg-white/70 rounded-xl p-5 shadow text-center text-black h-100px hover:scale-105 transition-transform duration-300">
+          <h3 className="font-semibold mb-3 ">SPRS Score</h3>
           <canvas ref={sprsRef}></canvas>
-          <p className="mt-3 text-lg font-bold text-red-500">-25 Score</p>
+          <p className="mt-3 text-lg font-bold text-gray-800">-25 Score</p>
         </div>
-
       </div>
     </div>
   )
