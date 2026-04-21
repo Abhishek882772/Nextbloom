@@ -14,7 +14,7 @@ const chartData = [
 ];
 export default function Rightblock() {
   return (
-    <div className="w-[40vw] mt-10 mx-auto rounded-2xl bg-black/30 p-6 h-[58vh] hover:scale-105 transition-transform duration-300">
+    <div className="w-[40vw] mt-10 mx-auto rounded-2xl bg-white/20 backdrop-blur-lg shadow-xl p-6 h-[58vh] hover:scale-105 transition-transform duration-300">
       <p className=" text-white mb-2 font-bold">Users</p>
       <ResponsiveContainer width="100%" height={200}>
         <AreaChart data={chartData}>

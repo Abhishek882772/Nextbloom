@@ -57,12 +57,12 @@ const Leftblock = () => {
   return (
     <div className="w-[40vw] mt-10 mx-auto rounded-2xl bg-black/30 p-6 h-[58vh]">
       <div className="grid md:grid-cols-2 gap-6 hover:scale-105 transition-transform duration-300">
-        <div className="bg-white/70  rounded-xl p-5 shadow text-center text-black h-100px hover:scale-105 transition-transform duration-300">
+        <div className="bg-white/20 backdrop-blur-lg shadow-xl  rounded-xl p-5 shadow text-center text-black h-100px hover:scale-105 transition-transform duration-300">
           <h3 className="font-semibold mb-3">Repeated user</h3>
           <canvas ref={assetRef}></canvas>
           <p className="mt-3 text-lg font-bold">100 Assets</p>
         </div>
-        <div className="bg-white/70 rounded-xl p-5 shadow text-center text-black h-100px hover:scale-105 transition-transform duration-300">
+        <div className="bg-white/20 backdrop-blur-lg shadow-xl rounded-xl p-5 shadow text-center text-black h-100px hover:scale-105 transition-transform duration-300">
           <h3 className="font-semibold mb-3 ">SPRS Score</h3>
           <canvas ref={sprsRef}></canvas>
           <p className="mt-3 text-lg font-bold text-gray-800">-25 Score</p>
