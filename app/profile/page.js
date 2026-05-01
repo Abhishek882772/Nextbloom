@@ -19,7 +19,7 @@ const handleEdit=e=>setData({...data,[e.target.name]:e.target.value})
 
 return(
 <div className='min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-pink-300 to-pink-600'>
-<img src="https://wallpapers.com/images/hd/profile-background-lb5h1hm2cebpa63c.jpg" className='absolute top-0 w-full h-full'  alt="" />
+<img src="./profile.jpg" className='absolute top-0 w-full h-full'  alt="" />
 <CommonNav/>
 <div className='w-[380px] p-6 rounded-2xl bg-white/20 backdrop-blur-lg shadow-xl flex flex-col items-center gap-4'>
 <div className='h-20 w-20 rounded-full bg-amber-100 border-4 border-white overflow-hidden'><img src={data.image||"/default.png"} alt="profile" className='w-full h-full object-cover'/></div>
@@ -27,8 +27,8 @@ return(
 <input name="image" value={data.image} onChange={handleEdit} placeholder="Image URL" className='bg-transparent border-b text-white text-center outline-none text-sm'/>
 )}
 {editProfile?
-<input name="name" value={data.name} onChange={handleEdit} className='bg-transparent border-b text-white text-center outline-none'/>
-:<h2 className='text-xl font-semibold text-white'>{data.name}</h2>}
+<input name="name" value={data.name} onChange={handleEdit} className='bg-transparent border-b text-gray-600 text-center outline-none'/>
+:<h2 className='text-xl font-semibold text-gray-600'>{data.name}</h2>}
 
 {editProfile?
 <input name="bio" value={data.bio} onChange={handleEdit} className='bg-transparent border-b text-white text-center outline-none'/>
@@ -45,7 +45,7 @@ return(
 ))}
 </div>
 
-<button onClick={()=>setEditProfile(!editProfile)} className='mt-3 px-4 py-2 rounded-lg bg-white text-amber-600 font-medium hover:bg-amber-100 transition'>
+<button onClick={()=>setEditProfile(!editProfile)} className='mt-3 hover:cursor-pointer hover:bg-amber-600 hover:text-white  hover:scale-105 px-4 py-2 rounded-lg bg-white text-amber-600 font-medium hover:bg-amber-100 transition'>
 {editProfile?"Save":"Edit Profile"}
 </button>
 </div>
