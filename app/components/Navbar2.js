@@ -10,7 +10,7 @@ const Navbar2 = () => {
         transition"> Home </span></Link>
           <div className="flex space-x-7 justify-between items-center">
             <Link href="/features" className="text-white font-bold hover:cursor-pointer hover:scale-105 transition-transform duration-300">Features</Link>
-            <Link href="/pricing" className="text-white font-bold hover:cursor-pointer hover:scale-105 transition-transform duration-300">Pricing</Link>
+            <Link href="/chat" className="text-white font-bold hover:cursor-pointer hover:scale-105 transition-transform duration-300">Pricing</Link>
             <Link href="/blog" className="text-white font-bold hover:cursor-pointer hover:scale-105 transition-transform duration-300">Blogs</Link>
             <Link href="/map" className="relative group w-fit hover:scale-105 transition-transform duration-300">
               <img src="./location.png" height="20" width="20" className='invert-100 ' alt="" />

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "type": "module",
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -20,6 +20,8 @@
     "react-dom": "19.2.4",
     "react-toastify": "^11.0.5",
     "recharts": "^3.8.1",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3",
     "toastify": "^2.0.1"
   },
   "devDependencies": {

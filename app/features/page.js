@@ -11,7 +11,7 @@ const page = () => {
           Things we actually cared about while building this
         </h1>
 
-        <p className="mt-3 text-white text-lg">
+        <p className="mt-3 text-gray-800 text-lg">
           Not buzzwords. Not “AI-powered everything”. Just features that solve real problems.
         </p>
 
@@ -19,7 +19,7 @@ const page = () => {
           
           <div>
             <h2 className="text-xl font-medium">Fast where it matters</h2>
-            <p className="text-white mt-1">
+            <p className="text-gray-800 mt-1">
               No unnecessary loading screens. No weird delays. You click something — it responds. 
               The way it should.
             </p>
@@ -27,21 +27,21 @@ const page = () => {
 
           <div>
             <h2 className="text-xl font-medium">Doesn’t fight you</h2>
-            <p className="text-white mt-1">
+            <p className="text-gray-800 mt-1">
               We tried really hard to not make you “learn the system”. It just works the way you expect.
             </p>
           </div>
 
           <div>
             <h2 className="text-xl font-medium">Built for actual usage</h2>
-            <p className="text-white mt-1">
+            <p className="text-gray-800 mt-1">
               This wasn’t designed for screenshots. It’s built for daily use — messy, real, imperfect.
             </p>
           </div>
 
           <div>
             <h2 className="text-xl font-medium">No overkill</h2>
-            <p className="text-white mt-1">
+            <p className="text-gray-800 mt-1">
               If something didn’t add value, we removed it. Simple as that.
             </p>
           </div>

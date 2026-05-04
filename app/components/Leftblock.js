@@ -15,7 +15,7 @@ const Leftblock = () => {
         datasets: [
           {
             data: [70, 30],
-            backgroundColor: [ '#c32e09','rgb(149 8 8)'],
+            backgroundColor: [ '#c32e09','#D3D3D3'],
             borderWidth: 0,
           },
         ],
@@ -23,7 +23,7 @@ const Leftblock = () => {
       options: {
         cutout: '70%',
         plugins: {
-          legend: { display: false },
+          legend: { position: 'bottom' },
         },
       },
     })

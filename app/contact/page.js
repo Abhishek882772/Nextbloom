@@ -105,14 +105,14 @@ const page = () => {
                     <button onClick={notify} className='font-bold bg-gradient-to-r from-purple-600 to-pink-500 px-10 py-3 rounded-3xl shadow-[0_0_15px_rgba(168,85,247,0.6)] hover:scale-110 hover:shadow-[0_0_30px_rgba(236,72,153,0.8)] active:scale-95 transition-all duration-300' type="submit">
                         Send Message
                     </button>
-
                     <ToastContainer />
                 </form>
+                    <p className="text-white m-0 p-0 text-sm mt-3 left-6">For any questions or assistance, please <Link href="/chat" className="text-blue-600 font-bold hover:cursor-pointer hover:scale-105 transition-transform duration-300"> Chat with Us</Link> </p>
 
                 
             </div>
-
         </div>
+        
         </>
     );
 };
