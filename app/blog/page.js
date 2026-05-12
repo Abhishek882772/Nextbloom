@@ -1,5 +1,5 @@
 "use client"
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import CommonNav from "../components/CommonNav";
 
 export default function Page(){
@@ -17,12 +17,38 @@ if(val.includes("v=")) return `https://www.youtube.com/embed/${val.split("v=")[1
 return null;
 };
 
-const add=()=>{
-const src=getSrc(input);
-if(!src||!caption) return;
-setList([...list,{src,caption}]);
-setInput("");setCaption("");
+const add=async ()=>{
+    const src=getSrc(input);
+    if(!src) return alert("Invalid iframe link");
+    try{
+        const res=await fetch("http://localhost:3000/blog",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({input:src,caption:caption})
+        });
+        const data=await res.json();
+        if(data.status==="success"){
+            setList([...list,{src,caption}]);
+            setInput("");setCaption("");
+        }
+    }
+    catch(error){
+        console.error("Error adding blog:", error);
+    }
 };
+
+useEffect(()=>{
+    const fetchBlogs=async()=>{
+        try{
+            const res=await fetch("http://localhost:3000/blog");
+            const data=await res.json();
+            setList(data.map(v=>({src:getSrc(v.input),caption:v.caption})));
+        }catch(error){
+            console.error("Error fetching blogs:", error);
+        }
+    }
+    fetchBlogs();
+},[]);
 
 return(
 <div className="min-h-screen bg-cover bg-center p-8" style={{backgroundImage:"url('/profile.jpg')"}}>
@@ -36,7 +62,13 @@ return(
 <div className="grid w-[90vw] m-auto mt-4 grid-cols-2 md:grid-cols-3 gap-4">
 {list.map((v,i)=>(
 <div key={i} className="rounded overflow-hidden bg-white/20 backdrop-blur-lg shadow-xl">
-<iframe src={v.src} className="w-full h-60" allowFullScreen/>
+{v.src ? (
+      <iframe src={v.src} className="w-full h-60" allowFullScreen />
+    ) : (
+      <div className="w-full h-60 flex items-center justify-center text-white">
+        Invalid video link
+      </div>
+    )}
 <div className="p-2 text-sm font-bold">{v.caption}</div>
 </div>
 ))}
