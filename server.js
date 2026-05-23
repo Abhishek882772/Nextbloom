@@ -7,7 +7,8 @@ import dotenv from "dotenv";
 import nodemailer from "nodemailer";
 import Blog from "./models/blog.js";
 import mongoose from "mongoose";
-
+import dns from "dns";
+dns.setDefaultResultOrder("ipv4first");
 dotenv.config();
 
 const dev = process.env.NODE_ENV !== "production";
@@ -22,9 +23,14 @@ app.prepare().then(async () => {
   expressApp.use(express.json());
 
   // ---------------- MONGODB ----------------
-  mongoose.connect(process.env.MongoDB_URL)
-    .then(() => console.log("MongoDB Connected"))
-    .catch(err => console.log(err));
+ try {
+  await mongoose.connect(process.env.MongoDB_URL);
+
+  console.log("MongoDB Connected");
+
+} catch (error) {
+  console.log("Mongo Error:", error);
+}
 
   // ---------------- NODEMAILER (UNCHANGED) ----------------
   const transporter = nodemailer.createTransport({
@@ -84,8 +90,7 @@ app.prepare().then(async () => {
     }
   });
 
-  // ---------------- NEXT HANDLER ----------------
-  expressApp.all("*", (req, res) => {
+  expressApp.use((req, res) => {
   return handle(req, res);
 });
 
