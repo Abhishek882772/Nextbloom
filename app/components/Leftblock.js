@@ -104,7 +104,7 @@ const Leftblock = () => {
       <div className="grid md:grid-cols-2 gap-6">
 
         {/* Community Growth */}
-        <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-5 border border-white/10 hover:scale-105 transition duration-300">
+        <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-4 border border-white/10 hover:scale-105 transition duration-300">
           <h3 className="text-white text-lg font-semibold mb-4">
             Community Growth
           </h3>
@@ -122,7 +122,7 @@ const Leftblock = () => {
         </div>
 
         {/* Feature Engagement */}
-        <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-5 border border-white/10 hover:scale-105 transition duration-300">
+        <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-4 border border-white/10 hover:scale-105 transition duration-300">
           <h3 className="text-white text-lg font-semibold mb-4">
             Feature Engagement
           </h3>
