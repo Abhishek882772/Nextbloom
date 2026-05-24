@@ -92,8 +92,8 @@ const Leftblock = () => {
     <div className="w-[40vw] mt-7 mx-auto rounded-2xl bg-white/20 backdrop-blur-lg shadow-xgit  p-6 h-[62vh] hover:scale-105 transition-transform duration-300">
 
       {/* Heading */}
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-white">
+      <div className="mb-3">
+        <h1 className="text-2xl font-bold text-white">
           Creator Community Analytics
         </h1>
         <p className="text-gray-300 mt-2 text-sm">
