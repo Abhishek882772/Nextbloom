@@ -34,7 +34,8 @@ app.prepare().then(async () => {
 
   // ---------------- NODEMAILER (UNCHANGED) ----------------
   const transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
+    service: "gmail",
+    host: "smtp.gmail.com",
     port: 587,
     secure: false,
     auth: {
@@ -65,7 +66,7 @@ app.prepare().then(async () => {
 
   // ---------------- BLOG ROUTES FIXED ----------------
 
-  expressApp.post("/blog", async (req, res) => {
+  expressApp.post("/api/blog", async (req, res) => {
     const { input, caption } = req.body;
 
     try {
@@ -79,7 +80,7 @@ app.prepare().then(async () => {
     }
   });
 
-  expressApp.get("/blog", async (req, res) => {
+  expressApp.get("/api/blog", async (req, res) => {
     try {
       const blogs = await Blog.find().sort({ createdAt: -1 });
       res.json(blogs);

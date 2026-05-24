@@ -36,7 +36,7 @@ export default function Page() {
 
     try {
 
-      const res = await fetch("/blog", {
+      const res = await fetch("/api/blog", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,29 +69,39 @@ export default function Page() {
   };
 
   useEffect(() => {
-
-    const fetchBlogs = async () => {
-
-      try {
-
-        const res = await fetch("/blog");
-        const data = await res.json();
-
-        const formattedData = data.map((item) => ({
-          src: getVideoLink(item.input),
-          caption: item.caption,
-        }));
-
-        setList(formattedData);
-
-      } catch (error) {
-        console.log(error);
+  const fetchBlogs = async () => {
+    try {
+      const res = await fetch("/api/blog");
+      
+      // Add this check
+      const contentType = res.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        console.error("Expected JSON, got:", contentType);
+        return;
       }
-    };
 
-    fetchBlogs();
+      const data = await res.json();
 
-  }, []);
+      // Guard: ensure it's an array
+      if (!Array.isArray(data)) {
+        console.error("Expected array, got:", data);
+        return;
+      }
+
+      const formattedData = data.map((item) => ({
+        src: getVideoLink(item.input),
+        caption: item.caption,
+      }));
+
+      setList(formattedData);
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  fetchBlogs();
+}, []);
 
   return (
 

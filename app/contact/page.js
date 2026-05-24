@@ -18,7 +18,7 @@ const page = () => {
 
     const handlesubmit = async (e) => {
         e.preventDefault();
-        fetch('http://localhost:5000/send', {
+        fetch('/send', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
