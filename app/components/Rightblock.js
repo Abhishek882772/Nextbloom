@@ -15,7 +15,7 @@ const chartData = [
 export default function Rightblock() {
   return (
     <div className="w-[40vw] mt-10 mx-auto rounded-2xl bg-white/20 backdrop-blur-lg shadow-xgit  p-6 h-[58vh] hover:scale-105 transition-transform duration-300">
-      <p className=" text-white mb-2 font-bold">Users</p>
+      <p className=" text-white mb-2 font-bold">Creator Engagement Analytics</p>
       <ResponsiveContainer width="100%" height={200}>
         <AreaChart data={chartData}>
           <defs>
@@ -32,7 +32,9 @@ export default function Rightblock() {
         </AreaChart>
       </ResponsiveContainer>
       <div className="text-sm text-gray-300 mt-4">
-        UI/UX in charts and graphic design transforms complex data into actionable, easy-to-understand visual stories. Effective data visualization emphasizes simplicity, using clear labels, appropriate chart types (e.g., line charts for trends, bar charts for comparisons), and strategic color palettes to highlight .  </div>
+        Analyze creator activity, audience growth, and engagement trends through
+  interactive real-time analytics. Built for scalable learning and creator
+  communities with seamless user experience and modern data visualization. </div>
     </div>
   );
 }

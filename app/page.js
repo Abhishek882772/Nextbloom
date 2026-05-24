@@ -10,9 +10,9 @@ export default function Home() {
       <Navbar />
       <div className=" rounded-2xl  bg-black/10 m-6  mb-28 border-black/50 border-2 ">
       <Navbar2 />
-       <div className="flex m-3 p-1 h-[65vh]">
-          <Leftblock className="m-2.5" />
-          <Rightblock className="m-2.5" />
+       <div className="flex m-1.5 p-1 h-[67vh]">
+          <Leftblock className="m-1.5" />
+          <Rightblock className="m-1.5" />
         </div>
 
       </div>

@@ -1,73 +1,137 @@
 "use client"
-import React from 'react'
-import { useEffect, useRef } from 'react'
-import Chart  from 'chart.js/auto'
+import React, { useEffect, useRef } from "react"
+import Chart from "chart.js/auto"
 
 const Leftblock = () => {
-  const assetRef = useRef(null)
-  const sprsRef = useRef(null)
+  const usersRef = useRef(null)
+  const engagementRef = useRef(null)
 
   useEffect(() => {
-    const assetChart = new Chart(assetRef.current, {
-      type: 'doughnut',
+    // Creator Community Growth Chart
+    const usersChart = new Chart(usersRef.current, {
+      type: "line",
       data: {
-        labels: ['Used', 'Remaining'],
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
         datasets: [
           {
-            data: [70, 30],
-            backgroundColor: [ '#c32e09','#D3D3D3'],
-            borderWidth: 0,
+            label: "Active Creators",
+            data: [120, 220, 380, 520, 760, 980],
+            borderColor: "#7c3aed",
+            backgroundColor: "rgba(124,58,237,0.2)",
+            tension: 0.4,
+            fill: true,
           },
         ],
       },
       options: {
-        cutout: '70%',
+        responsive: true,
         plugins: {
-          legend: { position: 'bottom' },
+          legend: {
+            labels: {
+              color: "#fff",
+            },
+          },
+        },
+        scales: {
+          x: {
+            ticks: {
+              color: "#ddd",
+            },
+            grid: {
+              color: "rgba(255,255,255,0.05)",
+            },
+          },
+          y: {
+            ticks: {
+              color: "#ddd",
+            },
+            grid: {
+              color: "rgba(255,255,255,0.05)",
+            },
+          },
         },
       },
     })
 
-    const sprsChart = new Chart(sprsRef.current, {
-      type: 'doughnut',
+    // Platform Feature Usage
+    const engagementChart = new Chart(engagementRef.current, {
+      type: "doughnut",
       data: {
-        labels: ['Implemented', 'Partial', 'Missing','not scored'],
+        labels: [
+          "YouTube Integration",
+          "Live Chat",
+          "Community Posts",
+          "Maps & Profiles",
+        ],
         datasets: [
           {
-            data: [50, 20, 20, 10],
-            backgroundColor: ['#260351','#440688','#8412ca','#c262ff' ],
-            borderWidth: 0,
+            data: [50, 20, 20, 10], backgroundColor: ['#260351','#440688','#8412ca','#c262ff' ], borderWidth: 0,
           },
         ],
       },
       options: {
-        cutout: '70%',
+        cutout: "72%",
         plugins: {
-          legend: { position: 'bottom' },
+          legend: {
+            position: "bottom",
+            labels: {
+              color: "#fff",
+            },
+          },
         },
       },
     })
 
     return () => {
-      assetChart.destroy()
-      sprsChart.destroy()
+      usersChart.destroy()
+      engagementChart.destroy()
     }
   }, [])
 
   return (
-    <div className="w-[40vw] mt-10 mx-auto rounded-2xl bg-black/30 p-6 h-[58vh]">
-      <div className="grid md:grid-cols-2 gap-6 hover:scale-105 transition-transform duration-300">
-        <div className="bg-white/20 backdrop-blur-lg shadow-xl  rounded-xl p-5 shadow text-center text-black h-100px hover:scale-105 transition-transform duration-300">
-          <h3 className="font-semibold mb-3">Repeated user</h3>
-          <canvas ref={assetRef}></canvas>
-          <p className="mt-3 text-lg font-bold">100 Assets</p>
+    <div className="w-[40vw] mt-7 mx-auto rounded-2xl bg-white/20 backdrop-blur-lg shadow-xgit  p-6 h-[62vh] hover:scale-105 transition-transform duration-300">
+
+      {/* Heading */}
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold text-white">
+          Creator Community Analytics
+        </h1>
+        <p className="text-gray-300 mt-2 text-sm">
+          Real-time insights for creators, engagement, and platform growth
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+
+        {/* Community Growth */}
+        <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-5 border border-white/10 hover:scale-105 transition duration-300">
+          <h3 className="text-white text-lg font-semibold mb-4">
+            Community Growth
+          </h3>
+
+          <canvas ref={usersRef}></canvas>
+
+          <div className="mt-4">
+            <p className="text-2xl font-bold text-violet-300">
+              +980 Creators
+            </p>
+            <p className="text-gray-400 text-sm">
+              Active users this month
+            </p>
+          </div>
         </div>
-        <div className="bg-white/20 backdrop-blur-lg shadow-xl rounded-xl p-5 shadow text-center text-black h-100px hover:scale-105 transition-transform duration-300">
-          <h3 className="font-semibold mb-3 ">SPRS Score</h3>
-          <canvas ref={sprsRef}></canvas>
-          <p className="mt-3 text-lg font-bold text-gray-800">-25 Score</p>
+
+        {/* Feature Engagement */}
+        <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-5 border border-white/10 hover:scale-105 transition duration-300">
+          <h3 className="text-white text-lg font-semibold mb-4">
+            Feature Engagement
+          </h3>
+
+          <canvas ref={engagementRef}></canvas>
         </div>
       </div>
+
+      
     </div>
   )
 }
