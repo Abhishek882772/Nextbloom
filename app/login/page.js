@@ -1,7 +1,33 @@
+"use client"
 import React from 'react'
 import CommonNav from '../components/CommonNav'
+import {ToastContainer, toast} from "react-toastify";
 
 const page = () => {
+  const notifySuccess = (message) => toast.success(message);
+  const notifyError = (message) => toast.error(message);
+  const [form, setForm] = React.useState({ email: "", password: "" });
+  const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value })
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try { const res = await fetch("/api/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", },
+      body: JSON.stringify({
+        email: form.email,
+        password: form.password,
+      }),
+    });
+    const data = await res.json();
+    if (data.status === "success") {
+      notifySuccess("Login successful!");
+    } else {
+      notifyError(data.message);
+    }
+  } catch (error) {
+    notifyError("An error occurred during login.");
+  }
+  };
   return (
     <div>
       <video   autoPlay muted loop className='video-bg wifull h-screen object-cover absolute inset-0 -z-10'>
@@ -14,13 +40,16 @@ const page = () => {
         <p className='text-lg mb-8'>Login to your account</p>
         <div className='flex justify-center items-center gap-7 '>
             <span className='block mb-2 font-bold text-lg'>Username:</span>
-            <textarea name="Name" id="" className='bg-black/50 text-md text-white h-[45px] w-[250px] p-2 placeholder:text-gray-500 border border-black rounded-md '></textarea>
+            <input value={form.email} onChange={handleChange} type="text" name="email" id="" className='bg-black/50 text-md text-white h-[45px] w-[250px] p-2 placeholder:text-gray-500 border border-black rounded-md ' />
         </div>
         <div className='flex justify-center items-center gap-7'>
             <span className='block mb-2 font-bold text-lg'>Password:</span>
-            <textarea name="Name" id="" className='bg-black/50 text-md text-white h-[45px] w-[250px] p-2 placeholder:text-gray-500 border border-black rounded-md '></textarea>
+            <input value={form.password} onChange={handleChange} type="password" name="password" id="" className='bg-black/50 text-md text-white h-[45px] w-[250px] p-2 placeholder:text-gray-500 border border-black rounded-md ' />
         </div>
-        <button className='bg-red-600 px-6 py-2 rounded-md font-bold hover:bg-red-700  mt-6'>Login</button>
+        <button type="submit" className='bg-red-600 px-6 py-2 rounded-md font-bold hover:bg-red-700  mt-6' onClick={handleSubmit}>
+          Login
+        </button>
+        <ToastContainer />
       </div>
     </div>
   )
