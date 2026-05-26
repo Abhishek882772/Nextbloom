@@ -30,43 +30,50 @@ export default function Page() {
 
   const add = async () => {
 
-    if (!input.trim()) {
-      return alert("Enter video link");
-    }
+  if (!input.trim()) {
+    return alert("Enter video link");
+  }
 
-    try {
+  try {
 
-      const res = await fetch("/api/blog", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          input,
+    const res = await fetch("/api/blog", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        input,
+        caption,
+      }),
+    });
+
+    console.log("STATUS:", res.status);
+
+    const text = await res.text();
+
+    console.log("RAW RESPONSE:", text);
+
+    const data = JSON.parse(text);
+
+    if (data.status === "success") {
+
+      setList((prev) => [
+        ...prev,
+        {
+          src: getVideoLink(input),
           caption,
-        }),
-      });
+        },
+      ]);
 
-      const data = await res.json();
-
-      if (data.status === "success") {
-
-        setList([
-          ...list,
-          {
-            src: getVideoLink(input),
-            caption,
-          },
-        ]);
-
-        setInput("");
-        setCaption("");
-      }
-
-    } catch (error) {
-      console.log(error);
+      setInput("");
+      setCaption("");
     }
-  };
+
+  } catch (error) {
+
+    console.log("ADD ERROR:", error);
+  }
+};
 
   useEffect(() => {
   const fetchBlogs = async () => {

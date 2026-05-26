@@ -5,7 +5,6 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import nodemailer from "nodemailer";
-import Blog from "./models/blog.js";
 import mongoose from "mongoose";
 import dns from "dns";
 dns.setDefaultResultOrder("ipv4first");
@@ -64,34 +63,7 @@ app.prepare().then(async () => {
     }
   });
 
-  // ---------------- BLOG ROUTES FIXED ----------------
-
-  expressApp.post("/api/blog", async (req, res) => {
-    const { input, caption } = req.body;
-
-    try {
-      const newBlog = new Blog({ input, caption });
-      await newBlog.save();
-      res.json({ status: "success" });
-
-    } catch (error) {
-      console.error("Error saving blog:", error);
-      res.json({ status: "fail" });
-    }
-  });
-
-  expressApp.get("/api/blog", async (req, res) => {
-    try {
-      const blogs = await Blog.find().sort({ createdAt: -1 });
-      res.json(blogs);
-
-    } catch (error) {
-      console.error("Error fetching blogs:", error);
-      res.json({ status: "fail" });
-    }
-  });
-
-  expressApp.use((req, res) => {
+expressApp.use((req, res) => {
   return handle(req, res);
 });
 
