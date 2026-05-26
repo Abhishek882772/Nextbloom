@@ -87,13 +87,20 @@ export default function Page() {
         return;
       }
 
-      const data = await res.json();
+    
+
+const data = await res.json();
+
+console.log("DATA:", data);
+
+console.log("IS ARRAY:", Array.isArray(data));
 
       // Guard: ensure it's an array
       if (!Array.isArray(data)) {
         console.error("Expected array, got:", data);
         return;
       }
+      
 
       const formattedData = data.map((item) => ({
         src: getVideoLink(item.input),

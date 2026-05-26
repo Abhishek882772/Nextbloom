@@ -5,56 +5,113 @@ const page = () => {
   return (
     <div className="min-h-screen bg-cover bg-center p-8" style={{backgroundImage:"url('/profile.jpg')"}}>
       <CommonNav />
-      <div className="w-[90vw] mx-auto my-7 p-7 bg-white/20 backdrop-blur-lg shadow-xl rounded-2xl">
-        
-        <h1 className="text-3xl md:text-4xl font-semibold leading-tight">
-          Things we actually cared about while building this
-        </h1>
+      <div className="w-[92vw] mx-auto my-10 p-8 md:p-12 rounded-3xl bg-white/10 backdrop-blur-2xl border border-white/20 shadow-2xl overflow-hidden relative">
 
-        <p className="mt-3 text-gray-800 text-lg">
-          Not buzzwords. Not “AI-powered everything”. Just features that solve real problems.
+  {/* Glow Effects */}
+  <div className="absolute top-0 left-0 w-72 h-72 bg-purple-500/20 blur-3xl rounded-full"></div>
+  <div className="absolute bottom-0 right-0 w-72 h-72 bg-pink-500/20 blur-3xl rounded-full"></div>
+
+  <div className="relative z-10">
+
+    <div className="max-w-3xl">
+
+      <p className="uppercase tracking-[0.25em] text-sm text-gray-700 font-semibold">
+        WHY PEOPLE STAY
+      </p>
+
+      <h1 className="mt-4 text-4xl md:text-6xl font-black leading-tight text-gray-900">
+        Built to feel smooth,
+        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+          simple and actually useful.
+        </span>
+      </h1>
+
+      <p className="mt-6 text-lg md:text-xl text-gray-800 leading-relaxed">
+        We focused on things users notice instantly — speed, clarity,
+        clean interactions, and features that genuinely improve the experience.
+        No unnecessary complexity.
+      </p>
+
+    </div>
+
+    {/* Features */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-14">
+
+      <div className="p-6 rounded-2xl bg-white/20 border border-white/20 hover:scale-[1.02] transition-all duration-300 shadow-lg">
+        <div className="text-3xl">⚡</div>
+
+        <h2 className="mt-4 text-2xl font-bold text-gray-900">
+          Instant Response
+        </h2>
+
+        <p className="mt-2 text-gray-800 leading-relaxed">
+          Fast loading, smooth navigation, and responsive interactions that
+          make the app feel alive.
         </p>
-
-        <div className="mt-10 space-y-8">
-          
-          <div>
-            <h2 className="text-xl font-medium">Fast where it matters</h2>
-            <p className="text-gray-800 mt-1">
-              No unnecessary loading screens. No weird delays. You click something — it responds. 
-              The way it should.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-xl font-medium">Doesn’t fight you</h2>
-            <p className="text-gray-800 mt-1">
-              We tried really hard to not make you “learn the system”. It just works the way you expect.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-xl font-medium">Built for actual usage</h2>
-            <p className="text-gray-800 mt-1">
-              This wasn’t designed for screenshots. It’s built for daily use — messy, real, imperfect.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-xl font-medium">No overkill</h2>
-            <p className="text-gray-800 mt-1">
-              If something didn’t add value, we removed it. Simple as that.
-            </p>
-          </div>
-
-        </div>
-
-        <div className="mt-12">
-          <button className="bg-gray-900 text-white px-5 py-2.5 rounded-md hover:bg-black transition">
-            Try it yourself
-          </button>
-        </div>
-
       </div>
+
+      <div className="p-6 rounded-2xl bg-white/20 border border-white/20 hover:scale-[1.02] transition-all duration-300 shadow-lg">
+        <div className="text-3xl">🔔</div>
+
+        <h2 className="mt-4 text-2xl font-bold text-gray-900">
+          Smart Toast Notifications
+        </h2>
+
+        <p className="mt-2 text-gray-800 leading-relaxed">
+          Clean toast alerts for actions, updates, errors, and success messages
+          without interrupting the user experience.
+        </p>
+      </div>
+
+      <div className="p-6 rounded-2xl bg-white/20 border border-white/20 hover:scale-[1.02] transition-all duration-300 shadow-lg">
+        <div className="text-3xl">🎯</div>
+
+        <h2 className="mt-4 text-2xl font-bold text-gray-900">
+          Simple UI That Makes Sense
+        </h2>
+
+        <p className="mt-2 text-gray-800 leading-relaxed">
+          No confusing layouts or unnecessary clicks. Everything is placed
+          where users naturally expect it.
+        </p>
+      </div>
+
+      <div className="p-6 rounded-2xl bg-white/20 border border-white/20 hover:scale-[1.02] transition-all duration-300 shadow-lg">
+        <div className="text-3xl">🚀</div>
+
+        <h2 className="mt-4 text-2xl font-bold text-gray-900">
+          Real Features, Not Just Design
+        </h2>
+
+        <p className="mt-2 text-gray-800 leading-relaxed">
+          Built with practical functionality like smooth media handling,
+          realtime interactions, modern APIs, and scalable architecture.
+        </p>
+      </div>
+
+    </div>
+
+    {/* Bottom CTA */}
+    <div className="mt-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+
+      <div>
+        <h3 className="text-2xl font-bold text-gray-900">
+          Experience it yourself
+        </h3>
+
+        <p className="text-gray-700 mt-1">
+          Designed for real users, real workflows, and real speed.
+        </p>
+      </div>
+
+      <button className="px-7 py-3 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300">
+        Explore Platform
+      </button>
+
+    </div>
+
+  </div>
+</div>
     </div>
   )
 }

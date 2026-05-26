@@ -1,75 +1,41 @@
-import mongoose from "mongoose";
-import Blog from "../../../models/blog";
+import connectDB from "@/lib/connectDB";
+import Blog from "@/models/blog";
 
-const connectDB = async () => {
+export async function GET() {
   try {
-    if (mongoose.connections[0].readyState) {
-      return;
-    }
-
-    await mongoose.connect(process.env.MongoDB_URL);
-
-    console.log("MongoDB Connected");
-
-  } catch (error) {
-    console.log("Mongo Error:", error);
-  }
-};
-
-export async function POST(req) {
-
-  try {
-
     await connectDB();
-
-    // READ BODY ONLY ONCE
-    const body = await req.json();
-
-    const { input, caption } = body;
-
-    const newBlog = new Blog({
-      input,
-      caption,
+    const blogs = await Blog.find().sort({
+      createdAt: -1,
     });
-
-    await newBlog.save();
-
-    return Response.json({
-      status: "success",
-    });
-
+    return Response.json(blogs);
   } catch (error) {
-
-    console.log("POST ERROR:", error);
 
     return Response.json(
-      {
-        status: "fail",
+      { status: "fail",
         error: error.message,
       },
       { status: 500 }
     );
   }
 }
-export async function GET() {
+export async function POST(req) {
   try {
     await connectDB();
-
-    const blogs = await Blog.find().sort({
-      createdAt: -1,
+    const body = await req.json();
+    const newBlog = await Blog.create({
+      input: body.input,
+      caption: body.caption,
     });
 
-    return Response.json(blogs);
-
+    return Response.json({
+      status: "success",
+      data: newBlog,
+    });
   } catch (error) {
-    console.log(error);
-
     return Response.json(
-      {
-        status: "fail",
+      {status: "fail",
         error: error.message,
-      },
-      { status: 500 }
+      },{ status: 500 }
     );
   }
 }
