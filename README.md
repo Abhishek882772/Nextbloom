@@ -304,10 +304,6 @@ Possible future improvements include:
 
 Aspiring Software Engineer | Full-Stack Developer
 
-### GitHub
-
-https://github.com/Abhishek882772
-
 ---
 
 ## ⭐ Project
